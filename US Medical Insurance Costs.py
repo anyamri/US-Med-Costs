@@ -57,7 +57,23 @@ def one_child_age():
     sum_of_ages = sum(int(i) for i in total_age) 
     avg_age_one_child = sum_of_ages / children.count('1') # divides total ages by total instances of 1 child for average
     print("The average age of a person with one child is " + str(avg_age_one_child) + " years old.")
-#one_child_age()
+# one_child_age()
 
-
+# Function to compare the BMI of smokers versus non smokers
+def compare_BMI():
+    average_BMI = (sum(float(i) for i in bmi)) / len(bmi)
+    smoker_bmi = list(zip(smoker, bmi))
+    smoker_bmi_list = []
+    non_smoker_bmi_list = []
+    for index, tuple in enumerate(smoker_bmi):
+        smkr = tuple[0]
+        weight = tuple[1]
+        if smkr == 'yes':
+            smoker_bmi_list.append(weight)
+        else:
+            non_smoker_bmi_list.append(weight)
+    smoker_bmi_avg = sum(float(i) for i in smoker_bmi_list) / len(smoker_bmi_list)
+    non_smoker_bmi_avg = sum(float(i) for i in non_smoker_bmi_list) / len(non_smoker_bmi_list)
+    print("The average BMI for a smoker is " + str(smoker_bmi_avg) + ". The average BMI for a non smoker is " + str(non_smoker_bmi_avg) + ".")
+# compare_BMI()
 
