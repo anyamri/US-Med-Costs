@@ -29,13 +29,13 @@ with open("C:\\Users\\ayamr\\Documents\\Coding\\Python portfolio\\Insurance.csv"
     for row in reader2:
         data = [row for row in reader2]
 # Function to determine least expensive region by average cost of insurance
-def least_expensive(r, c):
-    charges_float = [float(x) for x in c]
+def least_expensive():
+    charges_float = [float(x) for x in charges]
     duplicate_dict={} 
-    for i in r:
-        duplicate_dict[i]=r.count(i) # counts number of times a region apears in the data
+    for i in region:
+        duplicate_dict[i]=region.count(i) # counts number of times a region apears in the data
     d = defaultdict(float)
-    for k, v in zip(r, charges_float):
+    for k, v in zip(region, charges_float):
         d[k] += v # create dictionary with regions as keys and amounts as values where the values are total amounts for each unique regions
     region_average = {k: d[k]/duplicate_dict[k] for k in d.keys() & duplicate_dict} # divides the total amount per regions by the number of instances of the regions to get an average
     region_average_sorted = {k: v for k, v in sorted(region_average.items(), key=lambda item: item[1])} # sorts low to high
@@ -43,8 +43,8 @@ def least_expensive(r, c):
     cheapest_amount = list(region_average_sorted.values())[0]
     pricey_region = list(region_average_sorted.keys())[-1]
     pricey_amount = list(region_average_sorted.values())[-1]
-    return ("The cheapest region for health insurance is the " + cheapest_region + " region with an average cost of $" + str(cheapest_amount) + ". The most expensive region is the " + pricey_region + " region with an average cost of $" + str(pricey_amount) +".")
-# print(least_expensive(region, charges))
+    print("The cheapest region for health insurance is the " + cheapest_region + " region with an average cost of $" + str(cheapest_amount) + ". The most expensive region is the " + pricey_region + " region with an average cost of $" + str(pricey_amount) +".")
+# least_expensive()
 # Function to determine the average age of a person with one child
 def one_child_age():
     age_child = list(zip(age,children)) # zipped list of ages and children
@@ -57,7 +57,7 @@ def one_child_age():
     sum_of_ages = sum(int(i) for i in total_age) 
     avg_age_one_child = sum_of_ages / children.count('1') # divides total ages by total instances of 1 child for average
     print("The average age of a person with one child is " + str(avg_age_one_child) + " years old.")
-one_child_age()
+#one_child_age()
 
 
 
